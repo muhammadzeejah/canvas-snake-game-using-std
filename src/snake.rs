@@ -83,8 +83,7 @@ impl Snake {
             *self = Snake::new(self.width, self.height);
         }
 
-        // js! { console.log( "X:", @{self.head.0}, "Y:", @{self.head.1} ) }
-        // uncomment to see x and y coordinates of the snake's head in browser console.
+        
         self.head = new_head;
         if self.head == self.food {
             let mut food = self.food;

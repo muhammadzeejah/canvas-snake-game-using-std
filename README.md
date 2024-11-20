@@ -1,7 +1,6 @@
 # Snake Game
 
-A simple snake game built with Rust and WebAssembly using the `stdweb` crate.
-
+A simple snake game built with Rust and WebAssembly using the `stdweb` crate. For this project, I have sought assistance from YouTube.
 ## Setup
 
 ### Prerequisites

@@ -81,7 +81,11 @@ sudo npm install -g http-server
 http-server
 ```
 
-3. Open your browser and go to http://127.0.0.1:8080/
+3. Open your browser and go to 
+
+```bash
+http://127.0.0.1:{port}/
+```
 
 ## Troubleshooting
 

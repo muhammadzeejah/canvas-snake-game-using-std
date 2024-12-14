@@ -1,6 +1,6 @@
-use canvas::Canvas;
-use direction::Direction;
-use stdweb::unstable::TryInto;
+use crate::canvas::Canvas;
+use crate::direction::Direction;
+use js_sys::Math;
 
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 struct Block(u32, u32);
@@ -19,23 +19,12 @@ pub struct Snake {
 
 impl Snake {
     pub fn new(width: u32, height: u32) -> Snake {
-        let head_x: u32 = js! {return Math.floor(Math.random() * @{width})}
-            .try_into()
-            .unwrap();
-
-        let head_y: u32 = js! {return Math.floor(Math.random() * @{height})}
-            .try_into()
-            .unwrap();
-
+        let head_x = (Math::random() * width as f64).floor() as u32;
+        let head_y = (Math::random() * height as f64).floor() as u32;
         let head = Block(head_x, head_y);
 
-        let food_x: u32 = js! { return Math.floor(Math.random() * @{width}) }
-            .try_into()
-            .unwrap();
-        let food_y: u32 = js! { return Math.floor(Math.random() * @{height}) }
-            .try_into()
-            .unwrap();
-
+        let food_x = (Math::random() * width as f64).floor() as u32;
+        let food_y = (Math::random() * height as f64).floor() as u32;
         let food = Block(food_x, food_y);
         let tail = Vec::new();
 
@@ -88,14 +77,8 @@ impl Snake {
         if self.head == self.food {
             let mut food = self.food;
             while food == self.head || self.tail.contains(&food) {
-                let food_x: u32 = js! { return Math.floor(Math.random() * @{self.width}) }
-                    .try_into()
-                    .unwrap();
-
-                let food_y: u32 = js! { return Math.floor(Math.random() * @{self.height}) }
-                    .try_into()
-                    .unwrap();
-
+                let food_x = (Math::random() * self.width as f64).floor() as u32;
+                let food_y = (Math::random() * self.height as f64).floor() as u32;
                 food = Block(food_x, food_y);
             }
             self.food = food;

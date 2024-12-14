@@ -13,7 +13,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 #[wasm_bindgen(start)]
-pub fn main() {
+pub fn start() {
     let canvas = Canvas::new("#canvas", 20, 20);
     let snake = Rc::new(RefCell::new(Snake::new(20, 20)));
 
